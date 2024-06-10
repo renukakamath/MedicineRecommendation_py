@@ -1,0 +1,38 @@
+{% include 'pharmacy_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	<h1>Make Payment</h1>
+	<form method="post">
+		<table class="table" style="width: 500px;color: white">
+			<tr>
+				<th>Card Number</th>
+				<td  style="color: black"><input type="text"   pattern="[0-9]{16}"  required="" class="form-control" name="cad"></td>
+			</tr>
+			<tr>
+				<th>Cvv</th>
+				<td  style="color: black"><input type="text"   pattern="[0-9]{3}"  required="" class="form-control" name="cvv"></td>
+			</tr>
+			<tr>
+				<th>amount</th>
+				<td  style="color: black"><input type="text" readonly="" value="{{data['total_amt']}}" required="" class="form-control" name="amount"></td>
+			</tr>
+			<tr>
+				<td  align="center" colspan="2"><input type="submit"  class="btn btn-success"  name="payment" value="Pay"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+
+	 </div>
+
+  </section><!-- End Hero -->
+
+</form>
+{% include 'footer.html' %}

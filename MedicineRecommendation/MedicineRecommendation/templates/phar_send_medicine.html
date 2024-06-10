@@ -1,0 +1,65 @@
+{% include 'pharmacy_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	<form method="post">
+			
+	<h1>SEND REQUEST</h1>
+	<table class="table" style="width: 600px;color: white">
+		<!-- <tr>
+				<th>Availability</th>
+				<td><input type="text" readonly="" name="av" id="quant"  value="{{data['qunti']}}" required class="form-control" ></td>
+			</tr> -->
+		<tr>
+			<th>Distributor</th>
+			<td>
+				<select name="dis" required="" class="form-control">
+					<option>--select distributor--</option>
+					{% for r in data['dis'] %}
+					<option value="{{r['login_id']}}">{{r['fname']}} {{r['lname']}}</option>
+					{% endfor %}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>Quantity</th>
+			<td><input type="text" class="form-control" name="qty"></td>
+		</tr>
+		
+	
+		<tr>
+			<td colspan="2" align="center"><input class="btn btn-info" type="submit" name="add" value="ADD"></td>
+		</tr>
+	</table>
+
+	 </div>
+
+  </section><!-- End Hero -->
+<center>
+	<h1>View Request</h1>
+	<table class="table" style="width: 1000px;">
+		<tr>
+			<th>SL.NO</th>
+			<th>Medicine</th>
+			<th>Distributor</th>
+			<th>Quantity</th>
+		</tr>
+		{% for row in data['med'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['fname']}} {{row['lname']}}</td>
+			<td>{{row['quantity']}}</td>
+			<td><a href="phar_make_payment?"></a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</form>
+{% include 'footer.html' %}

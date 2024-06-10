@@ -1,0 +1,44 @@
+{% include 'pharmacy_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	
+	<h1 style="color: white">View Distributor Details</h1>
+
+<center>
+	
+	<table class="table" style="width: 600px;color: white">
+		<tr>
+			<th>Name</th>
+			<th>Unique ID</th>
+			<th>Place</th>
+			<th>Phone</th>
+			<th>Email</th>
+
+			
+		</tr>
+		<tbody>
+			{% for row in data['med'] %}
+			<tr>
+				<td>{{row['fname']}}</td>
+				<td>{{row['lname']}}</td>
+				<td>{{row['place']}}</td>
+				<td>{{row['phone']}}</td>
+				<td>{{row['email']}}</td>
+			
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</form>
+</center>
+	
+	 </div>
+  </section><!-- End Hero -->
+{% include 'footer.html' %}

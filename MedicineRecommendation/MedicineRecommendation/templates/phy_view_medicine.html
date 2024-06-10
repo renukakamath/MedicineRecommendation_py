@@ -1,0 +1,56 @@
+{% include 'pharmacy_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 200px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	
+	<h1 style="color: white">View Medicine</h1>
+</div>
+</section>
+<center>
+	
+	<table class="table" style="width: 600px;color: black">
+		<tr>
+			<th>SL.NO</th>
+			<th>Medicine</th>
+			<th>Type</th>
+			<th>Amount</th>
+			<th>Chemical Name</th>
+			<th>Nature</th>
+			<th>Unique Label</th>
+			<th>Side Effect</th>
+			<th>Storage</th>
+			
+		</tr>
+		{% for row in data['medsss'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['name']}}</td>
+			<td>{{row['ty']}}</td>
+			<td>{{row['a']}}</td>
+			<td>{{row['cn']}}</td>
+			<td>{{row['n']}}</td>
+			<td>{{row['ul']}}</td>
+			<td>{{row['se']}}</td>
+			<td>{{row['s']}}</td>
+			<td>{{row['description']}}</td>
+
+			
+			 <!-- <td><a class="btn btn-info" href="phy_view_manufacture_details?&id={{row['mid']}}">View Distributor Details</a></td> -->
+			<td><a class="btn btn-primary" href="phar_view_stock?mid={{row['medicine_id']}}&amt={{row['a']}}">view stock details</a></td>
+
+			<td><a class="btn btn-warning" href="phar_send_medicine?mid={{row['medicine_id']}}">Send Request</a></td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</form>
+</center>
+	
+	
+{% include 'footer.html' %}

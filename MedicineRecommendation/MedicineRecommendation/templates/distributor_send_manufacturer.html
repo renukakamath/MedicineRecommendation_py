@@ -1,0 +1,40 @@
+{% include 'distributor_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	<form method="post">
+			
+	<h1>SEND REQUEST</h1>
+	<table class="table" style="width: 400px;color: white">
+		<!-- <tr>
+				<th>Availability</th>
+				<td><input type="text" readonly="" name="av" id="quant"  value="{{data['qunti']}}" required class="form-control" ></td>
+			</tr> -->
+		<tr>
+			<th>Manufacturer</th>
+			<td>
+				<select name="man" required="" class="form-control">
+					{% for r in data['man'] %}
+					<option value="{{r['login_id']}}">{{r['name']}}</option>
+					{% endfor %}
+				</select>
+			</td>
+		</tr>
+	
+		<tr>
+			<td colspan="2" align="center"><input class="btn btn-info" type="submit" name="add" value="ADD"></td>
+		</tr>
+	</table>
+
+	 </div>
+
+  </section><!-- End Hero -->
+
+</form>
+{% include 'footer.html' %}

@@ -1,0 +1,37 @@
+{% include 'distributor_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+
+<form method="post">
+	<table align="center" class="table" style="width: 1000px;color: white">
+		<h3 align="center" style="color: white">MANUFACTURER DETAILS</h3>
+		<tr>
+			<th>Name</th>
+			
+			<th>District</th>
+			<th>Place</th>
+			<th>Phone</th>
+			<th>Email</th>
+			
+		</tr>
+		<tbody>
+			{% for row in data['med'] %}
+			<tr>
+				<td>{{row['name']}}</td>
+			
+				<td>{{row['dis']}}</td>
+				<td>{{row['place']}}</td>
+				<td>{{row['phone']}}</td>
+				<td>{{row['email']}}</td>
+			
+			</tr>
+			{% endfor %}
+	
+	</table>
+</form>
+</tbody></table></form></div></section>
+{% include 'footer.html' %}

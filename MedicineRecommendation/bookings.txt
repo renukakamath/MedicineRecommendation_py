@@ -1,0 +1,107 @@
+
+
+@api.route('/logins')
+def logins():
+	data={}
+	u=request.args['username']
+	p=request.args['password']
+	q1="select * from login where username='%s' and `password`='%s'"%(u,p)
+	print(q1)
+	res=select(q1)
+	if res:
+		data['data']=res
+		data['status']='success'
+	else:
+		data['status']='failed'
+	return str(data)
+
+@api.route('/userregister')
+def userregister():
+	data={}
+	f=request.args['fname']
+	l=request.args['lname']
+	
+	pl=request.args['place']
+	
+	ph=request.args['phone']
+	e=request.args['email']
+	dis=request.args['district']
+	dob=request.args['dob']
+	
+	u=request.args['username']
+	p=request.args['password']
+	q="select * from login where username='%s' and password='%s'"%(u,p)
+	res=select(q)
+	if res:
+		data['status']='already'
+	else:
+		q="insert into login values(NULL,'%s','%s','user')"%(u,p)
+		lid=insert(q)
+		r="insert into user values(NULL,'%s','%s','%s','%s','%s','%s','%s','%s')"%(lid,f,l,dob,ph,e,pl,dis)
+		insert(r)
+		print(r)
+		data['status']="success"
+	return str(data)
+
+@api.route('/Viewmedicine')
+def Viewmedicine():
+	data={}
+	
+	
+	q="select * from medicine "
+	res=select(q)
+	if res:
+		data['data']=res
+		data['status']='success'
+	data['method']="Viewmedicine"
+	return str(data)
+
+
+@api.route('/BookNow')
+def BookNow():
+	data={}
+	
+	log_id=request.args['log_id']
+	amt=request.args['amt']
+	mid=request.args['mid']
+	
+	q="insert into booking values(null,(select user_id from user where login_id='%s'),'%s','%s',curdate(),'booked')"%(log_id,mid,amt)
+	insert(q)
+	print(q)
+	data['status']="success"
+	return str(data)
+
+
+@api.route('/Makepayment')
+def Makepayment():
+	data={}
+	
+	log_id=request.args['login_id']
+	amt=request.args['amt']
+	bid=request.args['bid']
+	mid=request.args['mid']
+	
+	q="insert into bookingpayment values(null,(select user_id from user where login_id='%s'),'%s','%s',curdate())"%(log_id,bid,amt)
+	insert(q)
+
+	q="update stock set stock=stock-1 where medicine_id='%s'"%(mid)
+	update(q)
+	q="update  booking set status='Paid' where booking_id='%s'"%(bid)
+	update(q)  
+	print(q)
+	data['status']="success"
+	return str(data)
+
+
+@api.route('/Viewbookings')
+def Viewbookings():
+	data={}
+	
+	
+	q="select * from booking inner join medicine using (medicine_id) "
+	res=select(q)
+	if res:
+		data['data']=res
+		data['status']='success'
+	data['method']="Viewbookings"
+	return str(data)

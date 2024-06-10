@@ -1,0 +1,43 @@
+{% include 'distributor_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 700px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	
+	<h1 style="color: white">View Request</h1>
+	<table class="table" style="width: 1000px;color: white">
+		<tr>
+			<th>SL.NO</th>
+			<th>Pharmacy</th>
+			<th>Quantity</th>
+			<th>Status</th>
+			
+		</tr>
+		{% for row in data['req'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['pharmacy_name']}}</td>
+			<td>{{row['quantity']}}</td>
+			{% if row['status']=="pending" %}
+			<td><a class="btn btn-success" href="?action=sendssss&req={{row['request_id']}}&mid={{row['medicine_id']}}&m_id={{data['m_id']}}">Send</a></td>
+			{% else %}
+			<td>{{row['status']}}</td>
+			{% endif %}
+			 
+		</tr>
+		{% endfor %}
+			
+	</table>
+	</table>
+</center>
+</form>
+</center>
+	
+	 </div>
+  </section><!-- End Hero -->
+{% include 'footer.html' %}

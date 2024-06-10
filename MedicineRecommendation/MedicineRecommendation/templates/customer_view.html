@@ -1,0 +1,68 @@
+{% include 'public_header.html' %}
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" style="background-image: url('/static/assets/img/img18.jpg');height: 200px">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
+      
+      
+   
+
+<center>
+	
+	<h1 style="color: white">View Medicine</h1>
+</div>
+</section>
+<center>
+
+<form method="post">
+	<table>
+		<tr>
+			<td><input type="text" name="sname" class="form-control" placeholder="search here....."></td>
+			<td><input type="submit" name="submit" value="search" class="btn btn-primary"></td>
+		</tr>
+	</table>
+</form>
+	
+	<table class="table" style="width: 600px;color: black">
+		<tr>
+			<th>SL.NO</th>
+			<th>Medicine</th>
+			<!-- <th>Type</th>
+			<th>Amount</th>
+			<th>Chemical Name</th>
+			<th>Nature</th>
+			<th>Unique Label</th>
+			<th>Side Effect</th>
+			<th>Storage</th>
+			<th>Expiry Date</th> -->
+		</tr>
+
+
+		{% for row in data['meddddddddddd'] %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['name']}}</td>
+		<!-- 	<td>{{row['ty']}}</td>
+			<td>{{row['a']}}</td>
+			<td>{{row['cn']}}</td>
+			<td>{{row['n']}}</td>
+			<td>{{row['ul']}}</td>
+			<td>{{row['se']}}</td>
+			<td>{{row['s']}}</td>
+			<td>{{row['ed']}}</td> -->
+			 <!-- <td><a class="btn btn-info" href="phy_view_manufacture_details?&id={{row['mid']}}">View Distributor Details</a></td> -->
+			<td><a class="btn btn-primary" href="customer_view_stock?mid={{row['medicine_id']}}">QR code</a></td>
+		</tr>
+	{% endfor %}
+
+
+
+
+	</table>
+
+</center>
+</form>
+</center>
+	
+	
+{% include 'footer.html' %}
